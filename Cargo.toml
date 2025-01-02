@@ -5,6 +5,11 @@ description = "Simple Cloudconvert functionality for converting files"
 authors = ["Ori raisfeld"]
 license = "MIT"
 categories = ["encoding", "api-bindings", "filesystem"]
+keywords = [
+    "svg", "png", "pdf", "csv", "json", "xml", "word", "excel", "powerpoint", "image", "document", "file",
+    "convert", "cloudconvert", "file.io", "fileconvert", "cloudconvert.io", "converting",
+    "embedded", "cloudconvert.com", "file.io", "fileconvert.com", "fileconvert.io",
+    ]
 repository = "https://github.com/raisfeld-ori/cloudconvert-converting"
 readme = "README.md"
 edition = "2021"
