@@ -1,6 +1,6 @@
 [package]
 name = "simple_cloudconvert"
-version = "0.5.0"
+version = "0.5.1"
 description = "Simple Cloudconvert functionality for converting files"
 authors = ["Ori raisfeld"]
 license = "MIT"
