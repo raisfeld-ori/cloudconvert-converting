@@ -16,4 +16,4 @@ serde = { version = "1.0.163", features = ["derive"] }
 
 
 [dev-dependencies]
-dotenv = "*"
+dotenv = "0.15.0"
