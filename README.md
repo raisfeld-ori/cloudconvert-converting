@@ -26,6 +26,7 @@ Get Your cloudconvert API key from [here](https://cloudconvert.com/dashboard/api
 2. Cloudconvert also has a rate limit of 500 requests.
 3. This request uses blocking requests from ```request::blocking```, this could result in errors in async programs.
 4. No Advanced error handling. If there's any error it is simply returned back to you.
+5. This package uses the file.io free tier. Meaning the file uploading has a limit of 2gb.
 
 ## extra note
 
