@@ -64,7 +64,7 @@ pub fn upload<P: AsRef<Path>>(path: P) -> Result<Success, Box<dyn std::error::Er
         ;
     match res.status(){
         reqwest::StatusCode::OK => {
-            let success: Success = res.json().unwrap();
+            let success: Success = res.json()?;
             return Ok(success);
         },
         _ => {
