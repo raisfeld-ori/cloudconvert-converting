@@ -1,13 +1,8 @@
-use std::path::Path;
-use reqwest::blocking::{multipart, Client};
+use std::{fs, path::Path};
+use reqwest::blocking::Client;
 use serde::{Deserialize, Serialize};
 use serde_json::json;
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Success{
-    pub link: String,
-    pub id: String,
-}
+use rand::{distributions::Alphanumeric, Rng};
 
 #[derive(Debug, Serialize, Deserialize)]
 struct ResultFile{
@@ -51,24 +46,35 @@ pub struct Converter{
     client: Client
 }
 
-pub fn upload<P: AsRef<Path>>(path: P) -> Result<Success, Box<dyn std::error::Error>>{
+pub fn upload<P: AsRef<Path>>(path: P) -> Result<String, Box<dyn std::error::Error>>{
     let client = Client::new();
 
-    let form = multipart::Form::new()
-        .file("file", path)?;
-    let res = client.post("https://file.io/")
-        .multipart(form)
+    let bin: String = rand::thread_rng()
+    .sample_iter(Alphanumeric)
+    .take(14)
+    .map(|val| {return val.to_string();})
+    .collect();
+
+    let item: String = rand::thread_rng()
+    .sample_iter(Alphanumeric)
+    .take(14)
+    .map(|val| {return val.to_string();})
+    .collect();
+
+    let content = fs::read(path.as_ref())?;
+
+    let res = client.post("https://filebin.net/".to_string() + bin.as_str() + "/" + &item)
         .header("accept", "application/json")
-        .header("Content-Type", "multipart/form-data")
+        .header("Content-Type", "application/octet-stream")
+        .body(content)
         .send()?
         ;
     match res.status(){
-        reqwest::StatusCode::OK => {
-            let success: Success = res.json()?;
-            return Ok(success);
+        reqwest::StatusCode::CREATED => {
+            return Ok("https://filebin.net/".to_string() + bin.as_str() + "/" + &item);
         },
         _ => {
-            return Err("Failed to upload file: ".into());
+            return Err(format!("{:?}", res).into());
         },
     }
 }
@@ -130,7 +136,7 @@ impl Converter{
         return Ok(res.json()?);
     }
     pub fn convert<T: AsRef<Path>>(&self, file: T, input_format: &str, output_format: &str) -> Result<String, Box<dyn std::error::Error>>{
-        let file_url = upload(file)?.link;
+        let file_url = upload(file)?;
         let task = self.import_url(file_url)?;
         self.wait_for_task(&task.data.id)?;
         let task = self.convert_task(&task.data.id, input_format, output_format)?;

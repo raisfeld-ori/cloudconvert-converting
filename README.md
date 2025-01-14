@@ -2,7 +2,7 @@
 # Simple cloudconvert package
 
 This is a package for converting a file from one format to another using cloudconvert.
-This package is very minimal and uses Cloudconvert and file.io APIs in order to convert.
+This package is very minimal and uses Cloudconvert and filebin.io APIs in order to convert.
 
 ## Usage
 
@@ -26,7 +26,6 @@ Get Your cloudconvert API key from [here](https://cloudconvert.com/dashboard/api
 2. Cloudconvert also has a rate limit of 500 requests.
 3. This request uses blocking requests from ```request::blocking```, this could result in errors in async programs.
 4. No Advanced error handling. If there's any error it is simply returned back to you.
-5. This package uses the file.io free tier. Meaning the file uploading has a limit of 2gb.
 
 ## extra note
 
