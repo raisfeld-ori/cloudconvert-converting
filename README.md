@@ -2,7 +2,7 @@
 # Simple cloudconvert package
 
 This is a package for converting a file from one format to another using cloudconvert.
-This package is very minimal and uses Cloudconvert and filebin.io APIs in order to convert.
+This package is very minimal and uses Cloudconvert API in order to convert files.
 
 ## Usage
 
@@ -30,4 +30,4 @@ Get Your cloudconvert API key from [here](https://cloudconvert.com/dashboard/api
 ## extra note
 
 This package is NOT a cloudconvert API client. You can find
-that [here](https://crates.io/crates/cloudconvert)
+that [here](https://crates.io/crates/cloudconvert). This is a package for pure usage.
