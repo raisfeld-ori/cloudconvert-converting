@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>File Upload Form</title>
+</head>
+<body>
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>File Upload Form</title>
+  </head>
+  <body>
+  
+  <h2>Upload a File</h2>
+  <form action="https://eu-central.storage.cloudconvert.com/tasks" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="key" value="2e094e98-f4c9-464f-a83c-d98b110e6c9d/${filename}">
+    <input type="hidden" name="acl" value="private">
+    <input type="hidden" name="X-Amz-Algorithm" value="AWS4-HMAC-SHA256">
+    <input type="hidden" name="X-Amz-Credential" value="cloudconvert-production/20250116/fra/s3/aws4_request">
+    <input type="hidden" name="X-Amz-Date" value="20250116T062559Z">
+    <input type="hidden" name="X-Amz-Signature" value="d25e39e858e53dae443bb857cc6d15fde13c084db5a80db9fbaac292268057f2">
+    <input type="hidden" name="Policy" value="eyJleHBpcmF0aW9uIjoiMjAyNS0wMS0xNlQxODoyNTo1OVoiLCJjb25kaXRpb25zIjpbeyJhY2wiOiJwcml2YXRlIn0seyJidWNrZXQiOiJ0YXNrcyJ9LFsic3RhcnRzLXdpdGgiLCIka2V5IiwiMmUwOTRlOTgtZjRjOS00NjRmLWE4M2MtZDk4YjExMGU2YzlkXC8iXSx7InN1Y2Nlc3NfYWN0aW9uX3N0YXR1cyI6IjIwMSJ9LHsiWC1BbXotRGF0ZSI6IjIwMjUwMTE2VDA2MjU1OVoifSx7IlgtQW16LUNyZWRlbnRpYWwiOiJjbG91ZGNvbnZlcnQtcHJvZHVjdGlvblwvMjAyNTAxMTZcL2ZyYVwvczNcL2F3czRfcmVxdWVzdCJ9LHsiWC1BbXotQWxnb3JpdGhtIjoiQVdTNC1ITUFDLVNIQTI1NiJ9XX0=">
+    <input type="hidden" name="success_action_status" value="201">
+  
+    <label for="file">Choose file to upload:</label><br>
+    <input type="file" name="file" id="file" required><br><br>
+  
+    <button type="submit">Upload File</button>
+  </form>
+  
+  </body>
+  </html>
+  
+
+</body>
+</html>
+
+</body>
+</html>
