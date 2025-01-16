@@ -87,7 +87,6 @@ impl Converter{
             }))
             .send()?
             ;
-        println!("{:?}", res);
         return Ok(res.json()?);
     }
     fn wait_export(&self, task_id: &str) -> Result<ExportComplete, Box<dyn std::error::Error>>{
@@ -147,13 +146,9 @@ impl Converter{
     }
     pub fn convert<T: AsRef<Path>>(&self, file: T, input_format: &str, output_format: &str) -> Result<String, Box<dyn std::error::Error>>{
         let id = self.upload(file)?;
-        println!("Reached here");
         let task = self.convert_task(&id, input_format, output_format)?;
-        println!("Reached here");
         self.wait_for_task(&task.data.id)?;
-        println!("Reached here");
         let task = self.export_file(&task.data.id)?;
-        println!("Reached here");
         return Ok(self.wait_export(&task.data.id)?.data.result.files[0].url.clone());
     }
 }
@@ -166,6 +161,5 @@ fn test_tokens(){
     let res = converter.convert(dotenv::var("file").unwrap(), 
     &dotenv::var("input").unwrap(), 
     &dotenv::var("output").unwrap());
-    println!("{:?}", res);
-    //assert!(res.is_ok());
+    assert!(res.is_ok());
 }
